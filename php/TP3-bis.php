@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Exercices PHP</title>
+    <title>Scryptarium</title>
     <link rel="icon" href="../Icon&image/icon_elephant.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.6">
     <link rel="stylesheet" href="../css/style.css">
