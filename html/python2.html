@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercices PHP</title>
+    <link rel="icon" href="../Icon&image/icon_elephant.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.6">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+</head>
+<body class="enonce">
+    <a href="../index.html">
+        <img src="../images/house-solid.svg" alt="Home" class="icon">
+    </a>
+    <h2>Utilisations des listes</h2>
+    <div class="container">
+        <h3>Change un nombre en liste</h3>
+        <section class="prog">
+            <pre><code>
+    def liste(n):
+        if n // 10==0:
+            return [n]
+        else :
+            return liste(n//10) + [n % 10]
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    liste(155)
+    [1,5,5]
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Somme des termes d'un nombre au carré</h3>
+        <section class="prog">
+            <pre><code>
+    def somme(n):
+        if len(liste(n)) == 1:
+            return liste(n)[0] ** 2
+        else:
+            return liste(n)[-1] ** 2 + somme(n//10)
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    somme(155)
+    51
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Nombres heureux</h3>
+        <section class="prog">
+            <pre><code>
+    def heureux(n):
+        try:
+            if somme(n) == 1:
+                return True
+            else :
+                print(n)
+                return heureux(somme(n))
+        except RecursionError:
+            return False
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    heureux(19)
+    True
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Algorithme de syracuse</h3>
+        <section class="prog">
+            <pre><code>
+    def syracuse(u):
+        if u == 1:
+            return [1]
+        else:
+            if u%2==0:
+                u=u//2
+            else:
+                u=3*u+1
+            return [u] + syracuse(u)
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    syracuse(6)
+    [3, 10, 5, 16, 8, 4, 2, 1]
+            </code></pre>
+        </section>
+    </div>
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><img src="../images/arrow-up-solid.svg" id="icontotop"></button>
+</body>
+</html>

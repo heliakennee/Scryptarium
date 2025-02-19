@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercices PHP</title>
+    <link rel="icon" href="../Icon&image/icon_elephant.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.6">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/maths.js"></script>
+    <script src="../js/script.js"></script>
+</head>
+<body class="enonce">
+    <a href="../index.html">
+        <img src="../images/house-solid.svg" alt="Home" class="icon">
+    </a>
+    <h2>Nombres premiers</h2>
+    <div class="container">
+        <h3>Identifier un nombre premier</h3><br>
+        <section class="prog">
+            <pre><code>
+    function estpremier(nb) {
+        // Vérifie si l'entrée est valide
+        if (isNaN(nb) || nb < 2 || !Number.isInteger(nb)) {
+            return false
+        }
+
+        // Vérifie si le nombre est premier
+        for (let i = 2; i <= Math.sqrt(nb); i++) {
+            if (nb % i === 0) {
+                return false
+            }
+        }
+        return true
+    }
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    estpremier(19);
+    true
+            </code></pre>
+        </section>
+
+        <button class="btn-success" id="estpremier">Cliquez ici</button><br>
+    </div>
+    <div class="container">
+        <h3>Algortithme de decomposition</h3><br>
+        <section class="prog">
+            <pre><code>
+    function decomposer(n, index = 0) {
+        console.log(index);
+        if (n/index === 1 || n === 0 ) {
+            return [index];
+        } else if (n%index === 0  && estpremier(index)) {
+            return [index].concat(decomposer(n/index,index));
+        } else {
+            return decomposer(n,index+1);
+        }
+    }
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    decomposer(50);
+    [2,5,5]
+            </code></pre>
+        </section>
+        <button class="btn-success"  id="decomposer">Cliquez ici</button><br>
+    </div>
+    <div class="container">
+        <h3>Algortithme d'euclide</h3><br>
+        <section class="prog">
+            <pre><code>
+    function euclide(l,f) {
+        if (isNaN(l) && isNaN(f) && l == 0 && f == 0) { 
+            return "Attention: risque de division par 0";
+        }
+
+        maxi = Math.max(l,f);
+        mini = Math.min(l,f);     
+        if (maxi % mini == 0) {
+            alert(parseInt(mini));
+            return;
+        } else {
+            return euclide(mini,maxi%mini);
+        }
+    }
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    euclide(15,25)
+    5
+            </code></pre>
+        </section>
+        <button class="btn-success"  id="euclide">Cliquez ici</button><br>
+    </div>
+    <div class="container">
+        <h3>Algortithme de soustraction</h3><br>
+        <section class="prog">
+            <pre><code>
+    function soustraction(l,f) {
+        if (l-f == 0) {
+            return l;
+        } else { 
+            return soustraction(Math.abs(l-f),Math.min(l,f));   
+        }
+    }
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    soustraction(15,25)
+    5
+            </code></pre>
+        </section>
+        <button class="btn-success"  id="soustraction">Cliquez ici</button><br>
+    </div>
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><img src="../images/arrow-up-solid.svg" id="icontotop"></button>
+</body>
+</html>

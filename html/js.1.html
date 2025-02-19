@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercices PHP</title>
+    <link rel="icon" href="../Icon&image/icon_elephant.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.6">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+</head>
+<body class="enonce">
+    <a href="../index.html">
+        <img src="../images/house-solid.svg" alt="Home" class="icon">
+    </a>
+    <h2>Bases des nombres</h2>
+    <div class="container">
+        <section class="prog">
+            <pre><code>
+    lst = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Passer d'une base b à la base 10</h3>
+        <section class="prog">
+            <pre><code>
+    function b_to_10(b,n) {
+        if (n.length == 1) {
+            return lst.indexOf(n[0]);
+        } else {
+            return b_to_10(b,n.slice(1)) + Math.pow(b ,n.length-1) * lst.indexOf(n[0]);
+                
+        }
+    }
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    b_to_10(2,'1010');
+    10
+            </code></pre>
+        </section>
+        <button class="btn-success" id="b_to_10">Cliquez ici</button><br>
+    </div>
+    <div class="container">
+        <h3>Passer de la base 10 à une base b</h3><br>
+        <section class="prog">
+            <pre><code>
+    function _10_to_b(b,n) {
+        if (Math.trunc(n/b) == 0) {
+            return lst[n%b];
+        } else {
+            return _10_to_b(b,Math.trunc(n/b)) + lst[n%b];
+        }
+    }
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    _10_to_b(b,10);
+    '1010'
+            </code></pre>
+        </section>
+        <button class="btn-success" id="_10_to_b">Cliquez ici</button><br>
+    </div>
+    <div class="container">
+        <h3>Passer d'une base à une autre</h3><br>
+        <section class="prog">
+            <pre><code>
+    function b_to_b(d,a,n) {
+        return _10_to_b(a,b_to_10(d,n));
+    }
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    b_to_b(2,16,'1010');
+    'A'
+            </code></pre>
+        </section>
+        <button class="btn-success" id="b_to_b">Cliquez ici</button><br>
+    </div>
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><img src="../images/arrow-up-solid.svg" id="icontotop"></button>
+    <script src="../js/maths.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercices PHP</title>
+    <link rel="icon" href="../Icon&image/icon_elephant.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.6">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+</head>
+<body class="enonce">
+    <a href="../index.html">
+        <img src="../images/house-solid.svg" alt="Home" class="icon">
+    </a>
+    <h2>Nombres premiers</h2>
+    <div class="container">
+        <h3>Identifier un nombre premier</h3>
+        <section class="prog">
+            <pre><code>
+    from math import *
+
+    def estpremier(n):
+        return len([i for i in range(1,int(sqrt(n))+1) if n%i == 0 and n != 1]) == 1
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    estpremier(19)
+    True
+            </code></pre>
+        </section>
+        <p>Version récursive :</p>
+        <section class="prog">
+            <pre><code>
+    def prem_recursif(n,index=1,lst=[]):
+        if index > sqrt(n):
+            return len(lst) == 1
+        elif n%index == 0 and n != 1:
+            return prem_recursif(n,index+1,[index]+lst)
+        return prem_recursif(n,index+1,lst)
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    prem_recursif(19)
+    True
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Algortithme de decomposition</h3>
+            <section class="prog">
+                <pre><code>
+    def decomposer(n,index=2):
+        if n == index :
+            return [index]
+        elif n%index==0 and prem_recursif(index):
+            return [index] + decomposer(n//index,index) 
+        else :
+            return decomposer(n,index+1)
+                </code></pre>
+            </section>
+            <p>Console :</p>
+            <section class="prog">
+                <pre><code>
+        decomposer(100)
+        [2,2,5,5]
+                </code></pre>
+            </section>
+        </div>
+        <div class="container">
+            <h3>Algortithme d'euclide</h3>
+            <section class="prog">
+                <pre><code>
+    def euclide(l,f):
+        assert l != 0 and f != 0,"Attention: risque de division par 0"
+        maxi = max(l,f)
+        mini = min(l,f) 
+        if maxi % mini == 0:
+            return int(mini)
+        else :
+            return euclide(mini,maxi%mini)
+                </code></pre>
+            </section>
+            <p>Console :</p>
+            <section class="prog">
+                <pre><code>
+    euclide(25,15)
+    5
+                </code></pre>
+            </section>
+        </div>
+        <div class="container">
+            <h3>Algorithme de soustraction</h3>
+            <section class="prog">
+                <pre><code>
+    def soustraction(l,f):
+        if l-f == 0:
+            return l
+        else :
+            return soustraction(abs(l-f),min(l,f))  
+                </code></pre>
+            </section>
+            <p>Console :</p>
+            <section class="prog">
+                <pre><code>
+    soustraction(25,15)
+    5
+                </code></pre>
+            </section>
+        </div>
+
+
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><img src="../images/arrow-up-solid.svg" id="icontotop"></button>
+</body>
+</html>

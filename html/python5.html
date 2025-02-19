@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercices PHP</title>
+    <link rel="icon" href="../Icon&image/icon_elephant.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.6">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+</head>
+<body class="enonce">
+    <a href="../index.html">
+        <img src="../images/house-solid.svg" alt="Home" class="icon">
+    </a>
+    <h2>Turtle</h2>
+    <div class="container">
+        <h3>Pyramide</h3>
+        <section class="prog">
+            <pre><code>
+    from turtle import *
+    from random import *
+
+    right(60)
+
+    def triangle(c):
+        colormode(255)
+        fillcolor(randint(0,255),randint(0,255),randint(0,255))
+        begin_fill()
+        for i in range(3):
+            forward(c)
+            right(120)
+        end_fill()
+
+    def ligne(c,n):
+        if n > 0:
+            triangle(c)
+            forward(50)
+            return ligne(c,n-1)
+            
+    def pyramide(c,n):
+        if n > 0:
+            ligne(c,n)
+            right(120)
+            forward(50)
+            return pyramide(c,n-1)
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    pyramide(50,7)
+            </code></pre>
+        </section>
+        <img src="../images/pyramide.png" alt="pyramide">
+    </div>
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><img src="../images/arrow-up-solid.svg" id="icontotop"></button>
+</body>
+</html>

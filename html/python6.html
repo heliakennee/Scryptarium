@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercices PHP</title>
+    <link rel="icon" href="../Icon&image/icon_elephant.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.6">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+</head>
+<body class="enonce">
+    <a href="../index.html">
+        <img src="../images/house-solid.svg" alt="Home" class="icon">
+    </a>
+    <h2>Random</h2>
+    <div class="container">
+        <h3>PPF</h3>
+        <section class="prog">
+            <pre><code>
+    def motif(motif):
+        n=0
+        seq=""
+        while motif not in seq:
+            n+=1
+            seq+=choice(('P','F'))
+        return (n,seq)
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    print(motif("PPF"))
+    (4, 'FPPF')
+            </code></pre>
+        </section>
+        <p>Moyenne pour 1000 essaie</p>
+        <section class="prog">
+            <pre><code>
+    print(sum([motif("PPF")[0] for i in range(1000)])/1000)
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    7.908
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>FPP</h3>
+        <section class="prog">
+            <pre><code>
+    print(motif("FFP"))
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    (6, 'FPPFFP')
+            </code></pre>
+        </section>
+        <p>Moyenne pour 1000 essaie</p>
+        <section class="prog">
+            <pre><code>
+    print(sum([motif("FFP")[0] for i in range(1000)])/1000)
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    7.945
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Comparaison</h3>
+        <section class="prog">
+            <pre><code>
+    def comp(motif1,motif2):
+        n=0
+        seq=""
+        while motif1 not in seq and motif2 not in seq:
+            n+=1
+            seq+=choice(('P','F'))
+        if motif1 in seq:
+            return 1
+        else:
+            return 0
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    comp("PPF","FPP")
+    1
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Probabilités</h3>
+        <section class="prog">
+            <pre><code>
+    def prob(k):
+        s=0
+        for i in range(k):
+                s+=comp("PPF","FPP")
+        return str(100-s*100/k)+'%',str(s*100/k)+'%'
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    prob(1000)
+    ('74.3%', '25.7%')
+            </code></pre>
+        </section>
+    </div>
+
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><img src="../images/arrow-up-solid.svg" id="icontotop"></button>
+</body>
+</html>

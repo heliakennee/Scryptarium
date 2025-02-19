@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercices PHP</title>
+    <link rel="icon" href="../Icon&image/icon_elephant.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.6">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+</head>
+<body class="enonce">
+    <a href="../index.html">
+        <img src="../images/house-solid.svg" alt="Home" class="icon">
+    </a>
+    <h2>Les tableaux</h2>
+    <div class="container">
+        <h3>Exercice 1</h3>
+        <section class="prog">
+            <pre><code>
+    function remplir($tab) {
+        for ($i=0;$i<7;$i++) {
+            $tab[] = 0;
+        }
+        var_dump($tab);
+    }
+    echo remplir([])
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    array(7) { [0]=> int(0) [1]=> int(0) [2]=> int(0) [3]=> int(0) [4]=> int(0) 
+    [5]=> int(0) [6]=> int(0) }
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Exercice 2</h3>
+        <section class="prog">
+            <pre><code>
+    $lst = ['a','e','i','o','u','y'];
+    echo var_dump($lst);
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    array(6) { [0]=> string(1) "a" [1]=> string(1) "e" [2]=> string(1) "i" 
+    [3]=> string(1) "o" [4]=> string(1) "u" [5]=> string(1) "y" }
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Exercice 3</h3>
+        <section class="prog">
+            <pre><code>
+    function notes($tab) {
+        for ($i=0;$i<9;$i++) {
+            $tab[]=readline("Saisir une note: );
+        }
+        return $tab;
+    }
+    echo var_dump(notes([]));
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    Saisir une note: 10
+    Saisir une note: 4
+    Saisir une note: 18
+    Saisir une note: 0
+    Saisir une note: 14
+    Saisir une note: 13
+    Saisir une note: 9
+    Saisir une note: 16
+    Saisir une note: 11
+
+    array(9) { [0]=> string(2) "10" [1]=> string(1) "4" [2]=> string(2) "18" 
+    [3]=> string(1) "0" [4]=> string(2) "14" [5]=> string(2) "13" [6]=> string(1) "9" 
+    [7]=> string(2) "16" [8]=> string(2) "11" }
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Exercice 4</h3>
+        <section class="prog">
+            <pre><code>
+    function carre($tab) {
+        for ($i=1;$i<7;$i++) {
+            $tab[] = $i**2;
+        }
+        var_dump($tab);
+    }
+    echo carre([]);
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    array(7) { [0]=> int(0) [1]=> int(1) [2]=> int(4) [3]=> int(9) [4]=> int(16) 
+        [5]=> int(25) [6]=> int(36) }
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Exercice 5</h3>
+        <section class="prog">
+            <pre><code>
+    function fibre($tab) {
+        for ($i=1;$i<6;$i++) {
+            $tab[]= $tab[$i-1]+2;
+        }
+        var_dump($tab);
+    }
+    echo fibre([1]);
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    array(5) { [0]=> int(2) [1]=> int(2) [2]=> int(2) [3]=> int(2) [4]=> int(2) }
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Exercice 7</h3>
+        <section class="prog">
+            <pre><code>
+    function moyenne($tab) {
+        $v = 0;
+        $l = count($tab)
+        for ($i=0;$i<$l;$i++) {
+            $v+=$tab[$i];
+        }
+        return $v/count($tab);
+    }
+    echo moyenne(notes([5,10,15]));
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    10
+            </code></pre>
+        </section>
+    </div>
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><img src="../images/arrow-up-solid.svg" id="icontotop"></button>
+</body>
+</html>

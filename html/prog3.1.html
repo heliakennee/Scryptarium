@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercices PHP</title>
+    <link rel="icon" href="../Icon&image/icon_elephant.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.6">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+</head>
+<body class="enonce">
+    <a href="../index.html">
+        <img src="../images/house-solid.svg" alt="Home" class="icon">
+    </a>
+    <h2>Les tableaux 2</h2>
+    <div class="container">
+        <h3>Exercice 8</h3>
+        <section class="prog">
+            <pre><code>
+    $nbVals = intval(readline("Combien de valeurs voulez-vous saisir ? "));
+    $vals = array();
+    $pos = 0;
+    $neg = 0;
+    
+    for ($i = 0; $i < $nbVals; $i++) {
+        $vals[] = intval(readline("Saisir la valeur " . ($i + 1) . ": "));;
+        if ($vals[$i] >= 0) {
+            $pos++;
+        } else {
+            $neg++;
+        }
+    }
+    
+    echo "Nombre de valeurs positives : $pos\n";
+    echo "Nombre de valeurs négatives : $neg\n\n";
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    Combien de valeurs voulez vous saisir ? 3
+    Saisir la valeur 1 : 5
+    Saisir la valeur 2 : -2
+    Saisir la valeur 3 : 1
+    Nombre de valeurs positives : 2
+    Nombre de valeurs négatives : 1
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Exercice 9</h3>
+        <section class="prog">
+            <pre><code>
+    function somme($vals) {
+        $somme = 0;
+        for ($i = 0; $i < count($vals); $i++) {
+            $somme += $vals[$i];
+        }
+        echo "Somme des valeurs : $somme";
+    }
+
+    somme([2,5,9])
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    Somme des valeurs : 16
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Exercice 10</h3>
+        <section class="prog">
+            <pre><code>
+    $tab1 = array(4, 8, 7, 9, 1, 5, 4, 6);
+    $tab2 = array(7, 6, 5, 2, 1, 3, 7, 4);
+    $res = array();
+
+    for ($i = 0; $i < count($tab1); $i++) {
+        $res[] = $tab1[$i] + $tab2[$i];
+    }
+    var_dump($res);
+    echo "\n";
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    array(8) { [0]=> int(11) [1]=> int(14) [2]=> int(12) [3]=> int(11) [4]=> int(2) 
+    [5]=> int(8) [6]=> int(11) [7]=> int(10) }
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Exercice 11</h3>
+        <section class="prog">
+            <pre><code>
+    $tab1 = array(4, 8, 7, 9, 1, 5, 4, 6);
+    $tab2 = array(7, 6, 5, 2, 1, 3, 7, 4);
+
+    $total = 0;
+    for ($i = 0; $i < count($tab1); $i++) {
+        for ($j = 0; $j < count($tab2); $j++) {
+            $total += $tab1[$i] * $tab2[$j];
+        }
+    }
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    array(8) { [0]=> int(28) [1]=> int(48) [2]=> int(35) [3]=> int(18) [4]=> int(1) 
+    [5]=> int(15) [6]=> int(28) [7]=> int(24) }
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Exercice 12</h3>
+        <section class="prog">
+            <pre><code>
+    $tab3 = array(28,48,35,18,1,15,28,24);
+
+    for ($i = 0; $i < count($vals); $i++) {
+        $tab3[] = $vals[$i] + 1;
+    }
+    print_r($tab3);
+    echo "\n";
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    array(8) { [0]=> int(29) [1]=> int(49) [2]=> int(36) [3]=> int(19) [4]=> int(2) 
+    [5]=> int(16) [6]=> int(29) [7]=> int(25) }
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Exercice 13</h3>
+        <section class="prog">
+            <pre><code>
+    $nbVals = intval(readline("Combien de notes voulez-vous saisir ? "));
+
+    for ($i = 0; $i < $nbVals; $i++) {
+        $vals[] = intval(readline("Saisir la valeur : "));
+    }
+
+    $max = $vals[0];
+    $pos = 0;
+    for ($i = 1; $i < count($vals); $i++) {
+        if ($vals[$i] > $max) {
+            $max = $vals[$i];
+            $pos = $i;
+        }
+    }
+    echo "La plus grande valeur est $max à la position $pos;
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    Combien de notes voulez-vous saisir ? 3
+    Saisir la valeur : 5
+    Saisir la valeur : 10
+    Saisir la valeur : 8
+    La plus grande valeur est 10 à la position 2
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Exercice 14</h3>
+        <section class="prog">
+            <pre><code>
+    $tab = array();
+    $nbNotes = intval(readline("Combien de notes voulez-vous saisir ? "));
+    $smNotes = 0;
+
+    for ($i = 0; $i < $nbNotes; $i++) {
+        $tab[$i] = intval(readline("Saisir la note " . ($i + 1) . ": "));
+        $smNotes += $tab[$i];
+    }
+
+    $moyenne = $smNotes / $nbNotes;
+    $moyenneSup = 0;
+
+    for ($i = 0; $i < count($tab); $i++) {
+        if ($tab[$i] > $moyenne) {
+            $moyenneSup++;
+        }
+    }
+
+    echo "La moyenne de la classe est : $moyenne\n";
+    echo "Nombre de notes supérieures à la moyenne : $moyenneSup\n";
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    Combien de notes voulez bous saisir ? 3
+    Saisir la note 1 : 5
+    Saisir la note 2 : 10
+    Saisir la note 3 : 15
+    La moyenne de la classe est 10
+    Nombre de notes supérieur à la moyenne : 1
+            </code></pre>
+        </section>
+    </div>
+<button id="scrollToTopBtn" onclick="scrollToTop()"><img src="../images/arrow-up-solid.svg" id="icontotop"></button>
+</body>
+</html>

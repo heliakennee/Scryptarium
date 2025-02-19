@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP de Maths</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script> <!-- Lien vers le fichier JavaScript -->
+    <script src="../js/maths.js"></script>
+</head>
+<body class="enonce">
+    <a href="../index.html">
+        <img src="../images/house-solid.svg" alt="Home" class="icon">
+    </a>
+    <h2>Random</h2>
+    <div class="container">
+        <h3>PPF</h3>
+        <section class="prog">
+            <pre><code>
+    function motif(motif) {
+        let n = 0;
+        let seq = "";
+        const choices = ['P', 'F'];
+    
+        while (!seq.includes(motif)) {
+            n++;
+            seq += choices[Math.floor(Math.random() * choices.length)];
+        }
+        return [n, seq];
+    }
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    motif("PPF");
+    4,PPPF
+            </code></pre>
+        </section>
+        <button class="btn-success" id="PPF">Cliquez ici</button><br>
+        <p>Moyenne pour 1000 essaies</p>
+        <section class="prog">
+            <pre><code>
+    function moy(ch) {
+        let s =0;
+        for (i=0;i<1000;i++) {
+            s += motif(ch)[0];
+        }
+        return s/1000;
+    }
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    moy("PPF");
+    7.806
+            </code></pre>
+        </section>
+        <button class="btn-success" id="PPFmoy">Cliquez ici</button>
+    </div>
+    <div class="container">
+        <h3>FPP</h3>
+        <section class="prog">
+            <pre><code>
+    motif("FPP");
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    8,PPPFPFPP
+            </code></pre>
+        </section>
+        <button class="btn-success" id="FPP">Cliquez ici</button>
+        <p>Moyenne pour 1000 essaies</p>
+        <section class="prog">
+            <pre><code>
+    moy("FPP");
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    7.975
+            </code></pre>
+        </section>
+        <button class="btn-success" id="FPPmoy">Cliquez ici</button>
+    </div>
+    <div class="container">
+        <h3>Comparaison</h3>
+        <section class="prog">
+            <pre><code>
+    function comp(motif1, motif2) {
+        let n = 0;
+        let seq = "";
+        const choices = ['P', 'F'];
+    
+        while (!seq.includes(motif1) && !seq.includes(motif2)) {
+            n++;
+            seq += choices[Math.floor(Math.random() * choices.length)];
+        }
+    
+        return seq.includes(motif1) ? 1 : 0;
+    }
+    
+    // Exemple d'utilisation
+    console.log(comp("PF", "FP"));                
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    comparaison("PPF","FPP")
+    1
+            </code></pre>
+        </section>
+        <button class="btn-success" id="comparaison">Cliquez ici</button>
+    </div>
+    <div class="container">
+        <h3>Probabilités</h3>
+        <section class="prog">
+            <pre><code>
+    function probabilite(k,motif1,motif2) {
+        let s = 0;
+        for (let i = 0; i < k; i++) {
+            s += comp(motif1, motif2);
+        }
+        return [(100 - (s * 100 / k)) + "%", (s * 100 / k) + "%"];
+    }
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    probabilite(1000,'PPF','FPP');
+    [76.4%,23.6%]
+            </code></pre>
+        </section>
+        <button class="btn-success" id="probabilite">Cliquez ici</button>
+    </div>
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><img src="../images/arrow-up-solid.svg" id="icontotop"></button>
+</body>
+</html>

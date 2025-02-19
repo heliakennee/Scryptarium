@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercices PHP</title>
+    <link rel="icon" href="../Icon&image/icon_elephant.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.6">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+</head>
+<body class="enonce">
+    <a href="../index.html">
+        <img src="../images/house-solid.svg" alt="Home" class="icon">
+    </a>
+    <h2>Bases des nombres</h2>
+    <div class="container">
+        <section class="prog">
+            <pre><code>
+    lst = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Passer d'une base b à la base 10</h3>
+        <section class="prog">
+            <pre><code>
+    def integer(b,nombre):
+        '''Calcul partie entière d'un nombre en base b à passer en base 10'''
+        if len(nombre) == 1:
+            return int(lst.index(nombre[0]))
+        else :
+            return integer(b,nombre[1:]) + pow(b,len(nombre)-1) * int(lst.index(nombre[0]))
+
+    def flottant(b,nombre):
+        '''Calcul partie fractionnaire d'un nombre en base b à passer en base 10'''
+        if len(nombre) == 1:
+            return float(lst.index(nombre[0])) * pow(b,-1)
+        else :
+            return flottant(b,nombre[:-1]) + float(lst.index(nombre[-1])) * pow(b,-len(nombre))
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    integer(2,'1010')
+    10
+    flottant(2,'0101')
+    0.3125
+            </code></pre>
+        </section>
+        <p>Ce code utilise deux fonction, une permettant de passer la partie entière d'un nombre d'une base b à la base 10 et une autre permettant de gérer la partie 
+        décimale. </p>
+        <section class="prog">
+            <pre><code>
+    def b_to_10(b,nombre):
+        '''Passer d'une base b à la base 10'''
+        if not '.' in nombre:
+            return integer(b,nombre)
+        else:
+            return integer(b,nombre[:nombre.index(".")]) + flottant(b,nombre[nombre.index(".")+1:])
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    b_to_10(2,'1010.0101')
+    10.3125
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Passer de la base 10 à une base b</h3>
+        <section class="prog">
+            <pre><code>
+    def entier(b,nombre):
+        '''Calculer partie entière à du nombre décimal à convertir vers une autre base'''
+        if nombre // b == 0:
+            return lst[nombre%b]
+        else :
+            return entier(b,nombre // b) + lst[nombre%b]
+    
+    def fraction(b,nombre):
+        '''Calculer partie fractionnaire du nombre décimal à convetir vers une autre base'''
+        if int(nombre) == float(nombre):
+            return ""
+        else:
+            return lst[int(nombre*b)] + fraction(b,nombre*b-int(nombre*b))
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    entier(2,10)
+    '1010'
+    fraction(2,0.3125)
+    '0101'
+            </code></pre>
+        </section>
+            <p>Ce code utilise deux fonction, une permettant de passer la partie entière d'un nombre d'une base 10 à une base b et une autre permettant de gérer la 
+            partie décimale.</p>
+        <section class="prog">
+            <pre><code>
+    def _10_to_b(b,nombre):
+        '''Passer de la base 10 à une autre base b'''
+        if float(nombre) != int(nombre) :
+            return entier(b,int(nombre)) +"."+ fraction(b,nombre-int(nombre))
+        else:
+            return entier(b,int(nombre))
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    _10_to_b(2,10.3125)
+    '1010.0101'
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Passer d'une base à une autre</h3>
+        <section class="prog">
+            <pre><code>
+    def b_to_b(depart,arrive,n):
+        '''Passer un nombre d'une base à une autre base'''
+        return _10_to_b(arrive,b_to_10(depart,n))
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    b_to_b(2,16,'1010.0101')
+    'A.5'
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Calculatrice</h3>
+        <section class="prog">
+            <pre><code>
+    def calcul(operation,b):
+        assert len(operation) >= 3, 'le calcul ne prend pas suffisement de caractère'
+        for i in range(len(operation)):
+            if operation[i] == '+' or operation[i] == ':' or operation[i] == '/' or operation[i] == '-' or operation[i] == '*':
+                operateur = i
+        valeur1 = b_to_10(b,operation[:operateur])
+        valeur2 = b_to_10(b,operation[operateur+1:])
+        if operation[operateur] == '*':
+            return _10_to_b(b,valeur1*valeur2)
+        elif operation[operateur] == '+' :
+            return _10_to_b(b,valeur1+valeur2)
+        elif operation[operateur] == '-' :
+            return _10_to_b(b,valeur1-valeur2)
+        elif operation[operateur] == '/' or operation[operateur] == ':':
+            if valeur2 != 0:
+                return _10_to_b(b,valeur1/valeur2)
+            else:
+                return "Attention : on ne peut pas diviser par zero !"
+        else:
+            return 'Opérateur inconnu'
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    calcul('1010.0101',2)
+    '1010.0101'
+            </code></pre>
+        </section>
+    </div>
+
+
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><img src="../images/arrow-up-solid.svg" id="icontotop"></button>
+</body>
+</html>

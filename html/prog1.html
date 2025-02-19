@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercices PHP</title>
+    <link rel="icon" href="../Icon&image/icon_elephant.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.6">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+</head>
+<body class="enonce">
+    <a href="../index.html">
+        <img src="../images/house-solid.svg" alt="Home" class="icon">
+    </a>
+    <h2>Structures répétitives</h2>
+    <div class="container">
+        <h3>Exercice 1</h3>
+        <section class="prog">
+            <pre><code>
+    $somme = 0;
+    for ($i=0;$i<3;$i++) {
+        $somme += readline("Saisir une valeur : ");
+    }
+    echo $somme . "\n";
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    Saisir une valeur : 5
+    Saisir une valeur : 8
+    Saisir une valeur : 15
+    28
+
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Exercice 2</h3>
+        <section class="prog">
+    <pre><code>
+    do {
+        $val = readline("Saisir une valeur (ou une lettre pour arrêter) : ");
+
+        // Vérifie si la valeur entrée est un nombre
+        if (!is_numeric($val)) {
+            break;
+        }
+
+        $somme += floatval($val);
+        $cpt++;
+    } while (true);
+
+    // Affichage du résultat
+    echo ($cpt != 0) ? "Moyenne : " . ($somme / $cpt) . "\n" : 
+    "Division par 0 impossible\n";
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    Saisir une valeur (ou une lettre pour arrêter) : 10
+    Saisir une valeur (ou une lettre pour arrêter) : 20
+    Saisir une valeur (ou une lettre pour arrêter) : 30
+    Saisir une valeur (ou une lettre pour arrêter) : x
+    Moyenne : 20
+            </code></pre>
+        </section>
+        </div>
+        <div class="container">
+            <h3>Exercice 3</h3>
+            <section class="prog">
+                <pre><code>
+    do {
+        $nb = readline("Saisir un nombre entier positif 
+        (ou une lettre pour arrêter) : ");
+    
+        // Vérifier si l'entrée est un nombre entier
+        if (!is_numeric($nb) || intval($nb) != $nb || $nb < 0) {
+            echo "Fin du programme.\n";
+            break;
+        }
+    
+        $nb = intval($nb); // Convertir en entier
+        $fact = 1; 
+    
+        // Calcul de la factorielle
+        for ($i = 1; $i <= $nb; $i++) {
+            $fact *= $i;
+        }
+    
+        echo "Factorielle de $nb : $fact\n";
+    
+    } while (true);
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    Saisir un nombre entier positif (ou une lettre pour arrêter) : 5
+    Factorielle de 5 : 120
+
+    Saisir un nombre entier positif (ou une lettre pour arrêter) : 0
+    Factorielle de 0 : 1
+
+    Saisir un nombre entier positif (ou une lettre pour arrêter) : -3
+    Fin du programme.
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Exercice 4</h3>
+        <section class="prog">
+            <pre><code>
+    // Initialisation des variables
+    $maxStudents = 30;
+    $maxNotes = 5;
+    $students = [];
+    $totalGeneral = 0;
+    $studentsNoted = 0;
+    
+    // Fonction pour obtenir une note valide
+    function getValidNote($note) {
+        return is_numeric($note) && $note >= 0 && $note <= 20;
+    }
+    
+    // Saisie des notes pour chaque étudiant
+    for ($i = 1; $i <= $maxStudents; $i++) {
+        echo "Saisir les notes pour l'étudiant $i (max $maxNotes, entrer -1 pour 
+        terminer) :\n";
+        $notes = [];
+        
+        while (count($notes) < $maxNotes) {
+            $note = readline("Note #" . (count($notes) + 1) . " : ");
+            $note = trim($note); // Suppression des espaces
+    
+            if ($note == "-1") { // Fin de saisie des notes pour cet étudiant
+                break;
+            }
+            if (getValidNote($note)) {
+                $notes[] = (float)$note;
+            } else {
+                echo "Note invalide. Veuillez réessayer.\n";
+            }
+        }
+    
+        if (count($notes) > 0) {
+            $students[] = $notes;
+            $studentsNoted++;
+        }
+    
+        // Demander si le professeur souhaite continuer
+        $continue = readline("Souhaitez-vous saisir des notes pour un autre 
+        étudiant ? (oui/non) : ");
+        if (strtolower(trim($continue)) != "oui") {
+            break;
+        }
+    }
+    
+    // Calcul et affichage des résultats
+    echo "\nRésultats :\n";
+    foreach ($students as $index => $notes) {
+        $average = array_sum($notes) / count($notes);
+        $totalGeneral += array_sum($notes);
+        echo "Étudiant #" . ($index + 1) . " - Nombre de notes : " . 
+        count($notes) . ", Moyenne : " . number_format($average, 2) . "\n";
+    }
+    
+    $totalNotes = array_sum(array_map('count', $students)); 
+    
+    if ($studentsNoted > 0 && $totalNotes > 0) {
+        $generalAverage = $totalGeneral / $totalNotes;
+        echo "\nNombre total d'étudiants notés : $studentsNoted\n";
+        echo "Moyenne générale : " . number_format($generalAverage, 2) . "\n";
+    } else {
+        echo "Aucun étudiant noté.\n";
+    }
+                </code></pre>
+            </section>
+            <p>Console :</p>
+            <section class="prog">
+                <pre><code>
+    Saisir les notes pour l'étudiant 1 (max 5, entrer -1 pour terminer) :
+    Note #1 : 15
+    Note #2 : 18
+    Note #3 : 20
+    Note #4 : -1
+    Souhaitez-vous saisir des notes pour un autre étudiant ? (oui/non) : oui
+
+    Saisir les notes pour l'étudiant 2 (max 5, entrer -1 pour terminer) :
+    Note #1 : 10
+    Note #2 : 12
+    Note #3 : 14
+    Note #4 : 16
+    Note #5 : -1
+    Souhaitez-vous saisir des notes pour un autre étudiant ? (oui/non) : non
+
+    Étudiant #1 - Nombre de notes : 3, Moyenne : 17.67
+    Étudiant #2 - Nombre de notes : 4, Moyenne : 13.00
+
+    Nombre total d'étudiants notés : 2
+    Moyenne générale : 15.00
+                </code></pre>
+            </section>
+        </div>
+            
+
+
+
+<button id="scrollToTopBtn" onclick="scrollToTop()"><img src="../images/arrow-up-solid.svg" id="icontotop"></button>
+</body>
+</html>

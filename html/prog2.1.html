@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercices PHP</title>
+    <link rel="icon" href="../Icon&image/icon_elephant.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.6">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+</head>
+<body class="enonce">
+    <a href="../index.html">
+        <img src="../images/house-solid.svg" alt="Home" class="icon">
+    </a>
+    <h2>Structures répétitives 2</h2>
+    <div class="container">
+        <h3>Exercice 4</h3>
+        <section class="prog">
+            <pre><code>
+    function convertirMonnaie($montant, $deviseOrigine) {
+        $montantConverti = 0;
+        define("taux", 1.10);
+    
+        if ($deviseOrigine == "EUR") {
+            $montantConverti = $montant * taux;
+        } elseif ($deviseOrigine == "USD") {
+            $montantConverti = $montant / taux;
+    
+        }
+        return $montantConverti;
+    }
+    
+    do {
+        echo "Veuillez entrer le montant à convertir : ";
+        $montant = (float) trim(fgets(STDIN));
+    
+        echo "Veuillez entrer la devise d'origine (EUR ou USD) : ";
+        $deviseOrigine = trim(fgets(STDIN));
+    
+        $resultat = convertirMonnaie($montant, $deviseOrigine);
+        echo "Résultat de la conversion : " . $resultat . "\n";
+    
+      echo "Voulez-vous effectuer une autre conversion ? (O/N) : ";
+      $reponse=trim(fgets(STDIN));
+    
+    } while ($reponse == "O");
+    
+    echo "Fin du programme. Merci d'avoir utilisé le convertisseur !";
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    Veuillez entrer le montant à convertir : 10
+    Veuillez entrer la devise d'origine (EUR ou USD) : EUR
+    Résultat de la conversion : 11
+    Voulez-vous effectuer une autre conversion ? (O/N) : N 
+    Fin du programme. Merci d'avoir utilisé le convertisseur ! 
+            </code></pre>
+        </section>
+    </div>
+    <div class="container">
+        <h3>Exercice 6</h3>
+        <section class="prog">
+            <pre><code>
+    function capital($pays){
+        switch($pays) {
+            case "France": echo "Paris \n" ;break;
+            case "Italie": echo "Rome \n" ;break;
+            case "Espagne": echo "Madrid \n" ;break;
+            case "Allemagne": echo "Berlin \n" ;break;
+            default: echo " Cette capitale ne doit pas être « capitale », elle s’est échappée de
+        mon capital mémoire.";
+        } 
+    }
+    $max = 0;
+    do {
+        echo "Veuillez entrer un pays : ";
+        $pays = trim(fgets(STDIN));
+        
+        capital($pays);
+        
+        echo "Voulez-vous connaître une autre capitale (O/N) : ";
+        $reponse=trim(fgets(STDIN));
+        $max++;
+    }
+    while( $reponse == "O" && $max < 6);
+    echo " Fin du programme!";
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    Veuillez entrer un pays : France
+    Paris
+    Voulez vous connaître une autre capitale (O/N) :
+    Fin du programme!
+            </code></pre>
+        </section>
+    </div>
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><img src="../images/arrow-up-solid.svg" id="icontotop"></button>
+</body>
+</html>

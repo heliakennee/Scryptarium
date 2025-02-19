@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP de Maths</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script> <!-- Lien vers le fichier JavaScript -->
+    <script src="../js/maths.js"></script>
+</head>
+<body class="enonce">
+    <a href="../index.html">
+        <img src="../images/house-solid.svg" alt="Home" class="icon">
+    </a>
+    <h2>Modulos et congruences</h2>
+    <div class="container">
+        <h3>Suite</h3><br>
+        <section class="prog">
+            <pre><code>
+    function modulo1() {
+        lst = [];
+        for (let i = 0; i <= 100; i ++) {
+            if ((i**3 + 3*i -10) % 13 == 0) {
+                lst.push(i);
+            }
+        }
+        return lst;
+    }
+            </code></pre>
+        </section>
+        <p>Console :</p>
+        <section class="prog">
+            <pre><code>
+    modulo1()
+    [3,5,16,18,29,31,42,44,55,57,68,70,81,83,94,96]
+            </code></pre>
+        </section>
+        <button class="btn-success" id="modulo1">Cliquez ici</button><br>
+    </div>
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><img src="../images/arrow-up-solid.svg" id="icontotop"></button>
+</body>
+</html>

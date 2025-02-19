@@ -1,0 +1,295 @@
+html,body {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background: whitesmoke;
+	color: black;	
+	font-size: larger;
+	text-align: center;
+	margin-bottom: 100px;
+}
+
+h1 {
+	color: orangered;
+	margin: 50px 0;
+}
+
+p {
+	color: black;
+	margin: 20px;
+	font-size: larger;
+} 
+
+h2 {
+	font-size: 1.8em;
+	color: orangered;
+	margin: 40px 0;
+}
+
+h3 {
+	font-size: 1.3em;
+	display: inline-block;
+	color: black;
+	padding: 0 50px;
+	border-radius: 20px;
+	margin: 20px;
+}
+
+.container-box {
+	transition: max-height 0.8s ease-in-out, box-shadow 0.5s;
+	text-align: center;
+	align-items: center;
+	border-radius: 30px;
+	margin: 10px 15%;
+	background: white;
+	box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+	position: relative;
+	padding: 0 40px;
+	max-height: 160px;
+	overflow: hidden;
+}
+
+.container-box:hover {
+	max-height: 800px;
+	box-shadow: 5px 5px 10px rgba(189, 189, 189, 0.5);
+}
+
+/*écritures qui s'agrandissent*/
+.antman {
+	color: white;
+	margin: 0 5px 20px;
+}
+
+/* boites */
+ul {
+	list-style-type: none;
+}
+
+li {
+	display: inline-flex;
+}
+
+.boite li {	
+	display: block;
+}
+
+.boite {
+	transition: transform 0.5s, font-size 0.5s;
+	color: black;
+	font-size: 0;
+	margin: 25px 10px 25px;
+	padding: 10px 10px;
+	list-style-type: none;
+	background: orangered;
+	border-radius: 15px;
+	box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+}
+
+.boite:hover {
+	font-size: initial;
+	
+}
+
+/* icons des boites */
+.symb {
+	margin-top: -20px ;
+	transition: color 0.3s;
+	width: 30px;
+	height: 30px;
+	border: 10px solid orangered;
+	padding: 5px;
+	border-radius: 20px;
+}
+
+.symb:hover {
+	background: whitesmoke;
+}
+
+
+/*boutons et input*/
+/* Icon home */
+.icon {
+    transition: transform 0.5s, box-shadow 0.5s;
+    background: white;
+    border-radius: 20px;
+    padding: 10px;
+    width: 40px;
+    height: auto;
+    position: absolute;
+	top: 40px;
+	left: 40px;
+	box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+
+.icon:hover {
+	transform: scale(1.1);
+	box-shadow: 5px 5px 10px rgba(189, 189, 189, 0.5);
+}
+
+/* bouton réinitialisé */
+.reset {
+	z-index: 1000;
+	position: fixed;
+	top: 40px;
+	right: 40px;	
+	border: none;
+	padding: 10px;
+	border-radius: 20px;
+	box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+	width: 40px;
+	height: auto;
+	transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.reset:hover {
+	transform: scale(1.1);
+	box-shadow: 5px 5px 10px rgba(189, 189, 189, 0.5);
+}
+
+/* boutons submit */
+.btn-success {
+	font-size: 0.6em;
+	height: 40px;
+	transition: transform 0.5s;
+	color: white;
+	background: orangered;
+	border: none;
+	border-radius: 10px;
+	padding:0 10px;
+}
+
+.btn-success:hover {
+	transform: scale(1.08);
+	box-shadow: 5px 5px 10px rgba(189, 189, 189, 0.5);
+}
+
+/* boutton haut de page */
+#scrollToTopBtn {
+	transition: transform 0.5s, box-shadow 0.5s;
+    position: fixed; /* Positionne le bouton de façon fixe */
+    bottom: 20px; /* Positionné à 20px du bas */
+    right: 30px; /* Positionné à 30px de la droite */
+    display: none; /* Masqué par défaut */
+    border: none; /* Pas de bordure */
+    cursor: pointer; /* Curseur en forme de main */
+    z-index: 1000; /* Reste au-dessus des autres éléments */
+	box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+	padding: 10px;
+	border-radius: 20px;
+	background: transparent;
+}
+
+#scrollToTopBtn:hover {
+	transform: scale(1.1);
+	box-shadow: 5px 5px 10px rgba(189, 189, 189, 0.5);
+}
+
+#icontotop {
+	width: 30px;
+    height: 30px;
+}
+
+.icon-container {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+
+select {
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+/*input*/
+.zone {
+	width: 300px;
+	height: 25px;
+	border: solid black 1px;
+	border-radius: 12px;
+	padding-left: 5px;
+	margin: 15px;
+}
+
+/* conteneurs */
+.container {
+	transition: box-shadow 0.5s ease;
+	font-size: 100%;
+	border-radius: 30px;
+	margin: 50px 250px;
+	background: white;
+	box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+	position: relative;
+	padding: 10px;
+}
+
+.container:hover {
+	box-shadow: 5px 5px 10px rgba(189, 189, 189, 0.5);
+}
+/* enonce */
+.algo {
+	font-style: italic;
+	margin: 0 300px;
+	text-align: left;
+}
+
+.enonce .container {
+	text-align: left;
+}
+
+/* tableaux enonce */
+table {
+	margin: 0 auto;
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+th {
+	border: 1px solid black;
+	padding: 10px;
+}
+/* code php */
+.prog {
+	color: white;
+	background: black;
+}
+
+/* page php */
+/* damier en php */
+.damier {
+	border-collapse: collapse;
+	margin: 20px auto;
+}
+.damier td {
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+	border: 1px solid #333;
+}
+.black-cell {
+	background-color: #800020;
+	
+}
+.white-cell {
+	background-color: #bda981;
+	
+}
+.selec {
+	background: #ffa50f;
+}
+.index-cell {
+	background-color: #ddd;
+	font-weight: bold;
+}
+.deplacement {
+	transition: color 0.3;
+	margin-bottom: 5px;
+	border: none;
+	z-index: 1;
+}
+.deplacement:hover {
+	transform: scale(1.2);
+	z-index: 2;
+}
